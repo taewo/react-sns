@@ -1,14 +1,14 @@
-import AppLayout from '../components/AppLayout';
+import React from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
+import AppLayout from '../components/AppLayout';
 
 const Home = () => {
   return (
     <>
       <Head>
         <title>NodeBird</title>
-        {/* <link rel="https://cdnjs.cloudflare.com/ajax/libs/antd/3.23.4/antd.css" /> */}
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/antd/3.23.4/antd.css"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/antd/3.23.4/antd.css" />
       </Head>
       <AppLayout>
         <Link href="/about"><a>About</a></Link>
