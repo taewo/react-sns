@@ -1,5 +1,16 @@
 import React, { useState, useCallback } from 'react'
 import { Form, Input, Checkbox, Button } from 'antd';
+import PropTypes from 'prop-types'
+
+const TextInput = ({ value }) => {
+  return (
+    <div>{value}</div>
+  )
+}
+
+TextInput.propTypes = {
+  value: PropTypes.string,
+}
 
 const SignUp = () => {
   const [passwordCheck, setPasswordCheck] = useState("");
@@ -50,6 +61,7 @@ const SignUp = () => {
   return (
     <>
       <Form onSubmit={onSubmit} style={{ padding: 10 }}>
+        <TextInput value={'hello world'} />
         <div>
           <label htmlFor="user-id">아이디</label><br/>
           <Input name="user-id" value={id} required onChange={onChangeId} />
