@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import AppLayout from '../components/AppLayout'
 import rootReducer from '../reducers'
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
+import { createStore, compose, applyMiddleware } from 'redux'
 import withRedux from 'next-redux-wrapper'
 
 const NodeBird = ({ Component, store }) => {
@@ -26,6 +26,11 @@ NodeBird.propTypes = {
 }
 
 export default withRedux((initialState, options) => {
-	const store = createStore(rootReducer, initialState)
+	const middlewares = []
+	const enhancer = compose(
+		applyMiddleware(...middlewares),
+		!options.isServer && window.__REDUX_DEVTOOLS_EXTENSION__ !== 'undefined' ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f,
+	)
+	const store = createStore(rootReducer, initialState, enhancer)
 	return store
 })(NodeBird)
