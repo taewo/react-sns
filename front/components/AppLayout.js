@@ -3,13 +3,14 @@ import Link from 'next/link';
 import PropTypes from 'prop-types'
 import { Menu, Input, Button, Row, Col } from 'antd';
 import LoginForm from './LoginForm'
+import UserProfile from './UserProfile'
 
 const dummy = {
   nickname: '제로초',
   Post: [],
   Followings: [],
   Followers: [],
-  isLoggedIn: false,
+  isLoggedIn: true,
 }
 
 const AppLayout = ({ children }) => {
