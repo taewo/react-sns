@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import PostForm from '../components/PostForm'
 import PostCard from '../components/PostCard'
-import { useDispatch, useSelector } from 'react-redux'
+import { connect } from 'react-redux'
 import { loginAction, logoutAction } from '../reducers/user'
 
 const dummy = {
@@ -18,13 +18,18 @@ const dummy = {
 };
 
 
-const Home = () => {
-  const dispatch = useDispatch()
-  const user = useSelector(state => state.user)
+const Home = ({ user, dispatch, login, logout }) => {
+  // const dispatch = useDispatch()
+  // const user = useSelector(state => state.user)
+
+
   console.log(1, user)
   useEffect(() => {
-    dispatch(loginAction)
-    dispatch(logoutAction)
+    login()
+    logout()
+
+    // dispatch(loginAction)
+    // dispatch(logoutAction)
   }, [])  //  componentDidMount
   return (
     <>
@@ -38,4 +43,17 @@ const Home = () => {
   );
 };
 
-export default Home;
+function mapStateToProps (state) {
+  return {
+    user: state.user
+  }
+}
+
+function mapDispatchToProps (dispatch) {
+  return {
+    login: () => dispatch(loginAction),
+    logout: () => dispatch(logoutAction)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
