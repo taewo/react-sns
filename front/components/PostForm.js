@@ -2,19 +2,6 @@ import React from 'react'
 import { Form, Input, Button } from 'antd'
 import { useSelector } from 'react-redux'
 
-const dummy = {
-  isLoggedIn: true,
-  imagePaths: [],
-  mainPosts: [{
-    User: {
-      id: 1,
-      nickname: '제로초',
-    },
-    content: '첫 번째 게시글',
-    img: 'https://bookthumb-phinf.pstatic.net/cover/137/995/13799585.jpg?udate=20180726',
-  }],
-};
-
 const PostForm = () => {
   const { imagePath } = useSelector(state => state.post)
   return (
@@ -26,7 +13,7 @@ const PostForm = () => {
         <Button type="primary" style={{ float: 'right' }} htmlType="submit">짹짹</Button>
       </div>
       <div>
-        {dummy.imagePaths.map((v, i) => {
+        {imagePath.map((v, i) => {
           return (
             <div key={v} style={{ display: 'inline-block' }}>
               <img src={'http://localhost:3065/' + v} style={{ width: '200px' }} alt={v} />
