@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PostForm from '../components/PostForm'
 import PostCard from '../components/PostCard'
+import { useDispatch, useSelector } from 'react-redux'
+import { loginAction, logoutAction } from '../reducers/user'
 
 const dummy = {
   isLoggedIn: true,
@@ -17,6 +19,13 @@ const dummy = {
 
 
 const Home = () => {
+  const dispatch = useDispatch()
+  const user = useSelector(state => state.user)
+  console.log(1, user)
+  useEffect(() => {
+    dispatch(loginAction)
+    dispatch(logoutAction)
+  }, [])  //  componentDidMount
   return (
     <>
       {dummy.isLoggedIn && <PostForm />}
