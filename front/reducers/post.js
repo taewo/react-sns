@@ -1,5 +1,13 @@
 export const initialState = {
-  mainPosts: []
+  mainPosts: [{
+    User: {
+      id: 1,
+      nickname: '제로초',
+    },
+    content: '가즈아',
+    img: 'https://bookthumb-phinf.pstatic.net/cover/137/995/13799585.jpg?udate=20180726',
+  }],
+  imagePath: []
 }
 
 const ADD_POST = 'ADD_POST'

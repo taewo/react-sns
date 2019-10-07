@@ -1,5 +1,6 @@
 import React from 'react'
 import { Form, Input, Button } from 'antd'
+import { useSelector } from 'react-redux'
 
 const dummy = {
   isLoggedIn: true,
@@ -15,6 +16,7 @@ const dummy = {
 };
 
 const PostForm = () => {
+  const { imagePath } = useSelector(state => state.post)
   return (
     <Form style={{ margin: '10px 0 20px '}} encType="multipart/form-data">
       <Input.TextArea maxLength={140} placeholder="어떤 신기한 일이 있었나요?" />
