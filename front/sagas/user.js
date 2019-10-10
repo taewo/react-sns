@@ -1,4 +1,4 @@
-import { all, fork, takeLatest, call, put } from 'redux-saga/effects'
+import { all, fork, takeLatest, call, put, take } from 'redux-saga/effects'
 import { LOG_IN, LOG_IN_SUCCESS, LOG_IN_FAILURE } from '../reducers/user'
 
 function loginAPI() {
@@ -23,8 +23,19 @@ function* watchLogin() {
   yield takeLatest(LOG_IN, login)
 }
 
+const HELLO_SAGA = 'HELLO_SAGA'
+
+function* helloSaga() {
+  console.log('before')
+  while (true) {
+    yield take(HELLO_SAGA)
+    console.log('after')
+  }
+}
+
 export default function* userSaga() {
   yield all([
-    fork(watchLogin)
+    fork(watchLogin),
+    helloSaga()
   ])
 }
